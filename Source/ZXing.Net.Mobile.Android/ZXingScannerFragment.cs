@@ -5,6 +5,7 @@ using Android.Widget;
 using Android.Util;
 using Android.Support.V4.App;
 using ZXing.Net.Mobile.Core;
+using ZXing;
 
 namespace ZXing.Net.Mobile.Android
 {

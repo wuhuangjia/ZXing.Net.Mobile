@@ -6,6 +6,7 @@ using ZXing.Net.Mobile.Core;
 using Android.Views;
 using Android.App;
 using Android.Util;
+using ZXing;
 
 namespace ZXing.Net.Mobile.Android
 {
