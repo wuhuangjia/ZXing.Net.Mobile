@@ -8,9 +8,9 @@ using Foundation;
 using AVFoundation;
 using CoreGraphics;
 
-using ZXing;
+using ZXing.Net.Mobile.Core;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.iOS
 {	
     public class ZXingScannerViewController : UIViewController, IScannerViewController
 	{

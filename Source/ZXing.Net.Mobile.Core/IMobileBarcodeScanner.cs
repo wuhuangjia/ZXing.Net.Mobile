@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using ZXing;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Core
 {
 	public interface IZXingScanner<TOverlayViewType> : IScannerView
 	{		
@@ -26,8 +26,8 @@ namespace ZXing.Mobile
 		void AutoFocus();
 		void ToggleTorch();
 
-        void PauseAnalysis ();
-        void ResumeAnalysis ();
+        void PauseAnalysis();
+        void ResumeAnalysis();
 
 		bool UseCustomOverlay { get; }
 		string TopText { get; set; }
@@ -63,12 +63,12 @@ namespace ZXing.Mobile
 			return Scan(MobileBarcodeScanningOptions.Default);
 		}
 
-        public void ScanContinuously (Action<Result> scanHandler)
+        public void ScanContinuously(Action<Result> scanHandler)
         {
-            ScanContinuously (MobileBarcodeScanningOptions.Default, scanHandler);
+            ScanContinuously(MobileBarcodeScanningOptions.Default, scanHandler);
         }
 
-        public abstract void ScanContinuously (MobileBarcodeScanningOptions options, Action<Result> scanHandler);
+        public abstract void ScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler);
 
 		public abstract void Cancel();
 
@@ -80,13 +80,13 @@ namespace ZXing.Mobile
 
 		public abstract void AutoFocus();
 
-        public abstract void PauseAnalysis ();
-        public abstract void ResumeAnalysis ();
+        public abstract void PauseAnalysis();
+        public abstract void ResumeAnalysis();
 	}
 
 	public class CancelScanRequestEventArgs : EventArgs
 	{
-		public CancelScanRequestEventArgs ()
+		public CancelScanRequestEventArgs()
 		{
 			this.Cancel = false;
 		}

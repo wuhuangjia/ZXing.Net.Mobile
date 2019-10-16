@@ -3,9 +3,10 @@ using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Graphics;
-using ZXing.Mobile.CameraAccess;
+using ZXing.Net.Mobile.Core;
+using ZXing.Net.Mobile.Android.CameraAccess;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Android
 {
     public class ZXingSurfaceView : SurfaceView, ISurfaceHolderCallback, IScannerView, IScannerSessionHost
     {

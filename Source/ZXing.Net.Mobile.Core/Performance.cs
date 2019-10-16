@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Core
 {
 	public class PerformanceCounter
 	{

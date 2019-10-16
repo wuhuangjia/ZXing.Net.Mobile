@@ -7,9 +7,9 @@ using CoreFoundation;
 using UIKit;
 using AVFoundation;
 
-using ZXing.Mobile;
+using ZXing.Net.Mobile.iOS;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.iOS
 {
 	public class ZXingDefaultOverlayView : UIView
 	{

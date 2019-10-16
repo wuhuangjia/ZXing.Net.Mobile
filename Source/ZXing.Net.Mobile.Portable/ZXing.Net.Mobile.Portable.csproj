@@ -10,4 +10,7 @@
     <ProjectReference Include="..\ZXing.Net.Mobile.Core\ZXing.Net.Mobile.Core.csproj">
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ZXing.Net" Version="0.16.5" />
+  </ItemGroup>
 </Project>

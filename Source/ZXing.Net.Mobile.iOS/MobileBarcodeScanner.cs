@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using Foundation;
 using CoreFoundation;
 using UIKit;
+using ZXing.Net.Mobile.Core;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.iOS
 {
     public class MobileBarcodeScanner : MobileBarcodeScannerBase
 	{
@@ -78,7 +79,7 @@ namespace ZXing.Mobile
                         else if (useAVCaptureEngine && !allRequestedFormatsSupported)
                             Console.WriteLine("Not all requested barcode formats were supported by AVCapture, using ZXing instead");
 
-                        viewController = new ZXing.Mobile.ZXingScannerViewController(options, this);
+                        viewController = new ZXing.Net.Mobile.iOS.ZXingScannerViewController(options, this);
                         viewController.ContinuousScanning = true;
                     }
 
@@ -136,7 +137,7 @@ namespace ZXing.Mobile
 							else if (useAVCaptureEngine && !allRequestedFormatsSupported)
 								Console.WriteLine("Not all requested barcode formats were supported by AVCapture, using ZXing instead");
 
-							viewController = new ZXing.Mobile.ZXingScannerViewController(options, this);
+							viewController = new ZXing.Net.Mobile.iOS.ZXingScannerViewController(options, this);
 						}
 
 						viewController.OnScannedResult += barcodeResult => {

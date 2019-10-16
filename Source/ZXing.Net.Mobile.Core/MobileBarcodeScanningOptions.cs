@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ZXing;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Core
 {
 	public class MobileBarcodeScanningOptions
 	{

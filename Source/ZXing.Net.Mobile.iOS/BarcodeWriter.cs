@@ -22,7 +22,7 @@ using UIKit;
 using MonoTouch.UIKit;
 #endif
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.iOS
 {    
     /// <summary>
     /// A smart class to encode some content to a barcode image

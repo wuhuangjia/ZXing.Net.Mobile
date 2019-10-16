@@ -7,7 +7,6 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZXing.Net\lib\zxing.portable.csproj">
-    </ProjectReference>
+    <PackageReference Include="ZXing.Net" Version="0.16.5" />
   </ItemGroup>
 </Project>

@@ -70,10 +70,6 @@
       <Project>{AC17589E-C817-4FA8-B3EC-CCEB25E55E59}</Project>
       <Name>ZXing.Net.Mobile.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ZXing.Net\Source\lib\zxing.portable.csproj">
-      <Project>{24b441f2-cbe9-4405-9fd0-72ebcbea0ec3}</Project>
-      <Name>zxing.portable</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />

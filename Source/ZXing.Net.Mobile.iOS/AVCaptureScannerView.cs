@@ -14,9 +14,10 @@ using ObjCRuntime;
 using UIKit;
 
 using ZXing.Common;
-using ZXing.Mobile;
+using ZXing.Net.Mobile.iOS;
+using ZXing.Net.Mobile.Core;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.iOS
 {
     public class AVCaptureScannerView : UIView, IZXingScanner<UIView>, IScannerSessionHost
 	{

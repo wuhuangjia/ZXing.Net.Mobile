@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Views;
 using ApxLabs.FastAndroidCamera;
+using ZXing.Net.Mobile.Core;
+using Android.Util;
 
-namespace ZXing.Mobile.CameraAccess
+namespace ZXing.Net.Mobile.Android.CameraAccess
 {
     public class CameraAnalyzer
     {
@@ -110,7 +112,7 @@ namespace ZXing.Mobile.CameraAccess
 			}).ContinueWith(task =>
             {
                 if (task.IsFaulted)
-                    Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "DecodeFrame exception occurs");
+                    Log.Debug(MobileBarcodeScanner.TAG, "DecodeFrame exception occurs");
             }, TaskContinuationOptions.OnlyOnFaulted);
         }
 
@@ -154,7 +156,7 @@ namespace ZXing.Mobile.CameraAccess
 
             if (result != null)
             {
-                Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "Barcode Found");
+                Log.Debug(MobileBarcodeScanner.TAG, "Barcode Found");
 
                 _wasScanned = true;
                 BarcodeFound?.Invoke(this, result);

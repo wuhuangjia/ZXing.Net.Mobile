@@ -15,9 +15,9 @@ using ObjCRuntime;
 using UIKit;
 
 using ZXing.Common;
-using ZXing.Mobile;
+using ZXing.Net.Mobile.Core;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.iOS
 {
 	public class ZXingScannerView : UIView, IZXingScanner<UIView>, IScannerSessionHost
 	{

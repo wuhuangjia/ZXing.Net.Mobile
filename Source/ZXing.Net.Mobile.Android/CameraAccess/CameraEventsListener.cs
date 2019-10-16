@@ -1,8 +1,9 @@
 ﻿using System;
 using Android.Hardware;
 using ApxLabs.FastAndroidCamera;
+using Android.Util;
 
-namespace ZXing.Mobile.CameraAccess
+namespace ZXing.Net.Mobile.Android.CameraAccess
 {
     public class CameraEventsListener : Java.Lang.Object, INonMarshalingPreviewCallback, Camera.IAutoFocusCallback
     {
@@ -25,7 +26,7 @@ namespace ZXing.Mobile.CameraAccess
 
         public void OnAutoFocus(bool success, Camera camera)
         {
-            Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "AutoFocus {0}", success ? "Succeeded" : "Failed");
+            Log.Debug(MobileBarcodeScanner.TAG, "AutoFocus {0}", success ? "Succeeded" : "Failed");
         }
     }
 }

@@ -1,10 +1,13 @@
 using System;
 using System.Threading.Tasks;
 using Android.Content;
-using ZXing;
 using Android.OS;
+using ZXing.Net.Mobile.Core;
+using Android.Views;
+using Android.App;
+using Android.Util;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Android
 {
 
 	public class MobileBarcodeScanner : MobileBarcodeScannerBase
@@ -13,50 +16,50 @@ namespace ZXing.Mobile
 
         static ActivityLifecycleContextListener lifecycleListener;
 
-		public static void Initialize (Android.App.Application app)
+		public static void Initialize(Application app)
 		{
 			var version = Build.VERSION.SdkInt;
 
-            if (version >= BuildVersionCodes.IceCreamSandwich) {
-                lifecycleListener = new ActivityLifecycleContextListener ();
-                app.RegisterActivityLifecycleCallbacks (lifecycleListener);
+            if(version >= BuildVersionCodes.IceCreamSandwich) {
+                lifecycleListener = new ActivityLifecycleContextListener();
+                app.RegisterActivityLifecycleCallbacks(lifecycleListener);
             }
 		}
 
-		public static void Uninitialize (Android.App.Application app)
+		public static void Uninitialize(Application app)
 		{
 			var version = Build.VERSION.SdkInt;
 
-			if (version >= BuildVersionCodes.IceCreamSandwich)
-				app.UnregisterActivityLifecycleCallbacks (lifecycleListener);
+			if(version >= BuildVersionCodes.IceCreamSandwich)
+				app.UnregisterActivityLifecycleCallbacks(lifecycleListener);
 		}
 
-		public Android.Views.View CustomOverlay { get; set; }
+		public View CustomOverlay { get; set; }
 		//public int CaptureSound { get;set; }
 
 		bool torch = false;
 
-		Context GetContext (Context context)
+		Context GetContext(Context context)
 		{
-			if (context != null)
+			if(context != null)
 				return context;
 			
 			var version = Build.VERSION.SdkInt;
 
-			if (version >= BuildVersionCodes.IceCreamSandwich)
+			if(version >= BuildVersionCodes.IceCreamSandwich)
 				return lifecycleListener.Context;
 			else
-				return Android.App.Application.Context;
+				return Application.Context;
 		}
 
-		public override void ScanContinuously (MobileBarcodeScanningOptions options, Action<Result> scanHandler)
+        public override void ScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler)
 		{
-			ScanContinuously (null, options, scanHandler);
+			ScanContinuously(null, options, scanHandler);
 		}
 
-		public void ScanContinuously (Context context, MobileBarcodeScanningOptions options, Action<Result> scanHandler)
+		public void ScanContinuously(Context context, MobileBarcodeScanningOptions options, Action<Result> scanHandler)
 		{
-			var ctx = GetContext (context);
+			var ctx = GetContext(context);
 			var scanIntent = new Intent(ctx, typeof(ZxingActivity));
 
 			scanIntent.AddFlags(ActivityFlags.NewTask);
@@ -68,22 +71,22 @@ namespace ZXing.Mobile
 			ZxingActivity.TopText = TopText;
 			ZxingActivity.BottomText = BottomText;
 
-			ZxingActivity.ScanCompletedHandler = (Result result) => 
+			ZxingActivity.ScanCompletedHandler =(Result result) => 
 			{
-				if (scanHandler != null)
-					scanHandler (result);
+				if(scanHandler != null)
+					scanHandler(result);
 			};
 
 			ctx.StartActivity(scanIntent);
 		}
 
-		public override Task<Result> Scan (MobileBarcodeScanningOptions options)
+		public override Task<Result> Scan(MobileBarcodeScanningOptions options)
 		{
-			return Scan (null, options);
+			return Scan(null, options);
 		}
-		public Task<Result> Scan (Context context, MobileBarcodeScanningOptions options)
+		public Task<Result> Scan(Context context, MobileBarcodeScanningOptions options)
 		{
-			var ctx = GetContext (context);
+			var ctx = GetContext(context);
 
 			var task = Task.Factory.StartNew(() => {
 
@@ -102,18 +105,18 @@ namespace ZXing.Mobile
 
 				Result scanResult = null;
 
-				ZxingActivity.CanceledHandler = () => 
+				ZxingActivity.CanceledHandler =() => 
 				{
 					waitScanResetEvent.Set();
 				};
 
-				ZxingActivity.ScanCompletedHandler = (Result result) => 
+				ZxingActivity.ScanCompletedHandler =(Result result) => 
 				{
 					scanResult = result;
 					waitScanResetEvent.Set();
 				};
 
-				ctx.StartActivity (scanIntent);
+				ctx.StartActivity(scanIntent);
 
 				waitScanResetEvent.WaitOne();
 
@@ -128,30 +131,30 @@ namespace ZXing.Mobile
 			ZxingActivity.RequestCancel();
 		}
 
-		public override void AutoFocus ()
+		public override void AutoFocus()
 		{
 			ZxingActivity.RequestAutoFocus();
 		}
 
-		public override void Torch (bool on)
+		public override void Torch(bool on)
 		{
 			torch = on;
 			ZxingActivity.RequestTorch(on);
 		}
 
-		public override void ToggleTorch ()
+		public override void ToggleTorch()
 		{
-			Torch (!torch);
+			Torch(!torch);
 		}
 
-		public override void PauseAnalysis ()
+		public override void PauseAnalysis()
 		{
-			ZxingActivity.RequestPauseAnalysis ();
+			ZxingActivity.RequestPauseAnalysis();
 		}
 
-		public override void ResumeAnalysis ()
+		public override void ResumeAnalysis()
 		{
-			ZxingActivity.RequestResumeAnalysis ();
+			ZxingActivity.RequestResumeAnalysis();
 		}
 
 		public override bool IsTorchOn {
@@ -160,21 +163,22 @@ namespace ZXing.Mobile
 			}
 		}
 
-        internal static void LogDebug (string format, params object [] args)
+        internal static void LogDebug(string format, params object [] args)
         {
-            Android.Util.Log.Debug ("ZXING", format, args);
+            Log.Debug("ZXING", format, args);
         }
-        internal static void LogError (string format, params object [] args)
+        internal static void LogError(string format, params object [] args)
         {
-            Android.Util.Log.Error ("ZXING", format, args);
+            Log.Error("ZXING", format, args);
         }
-        internal static void LogInfo (string format, params object [] args)
+        internal static void LogInfo(string format, params object [] args)
         {
-            Android.Util.Log.Info ("ZXING", format, args);
+            Log.Info("ZXING", format, args);
         }
-        internal static void LogWarn (string format, params object [] args)
+        internal static void LogWarn(string format, params object [] args)
         {
-            Android.Util.Log.Warn ("ZXING", format, args);
+            Log.Warn("ZXING", format, args);
         }
-	}
+
+    }
 }

@@ -1,7 +1,8 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.OS;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Android
 {
     public class ActivityLifecycleContextListener : Java.Lang.Object, Application.IActivityLifecycleCallbacks
     {
@@ -17,7 +18,7 @@ namespace ZXing.Mobile
             }
         }
 
-        public void OnActivityCreated (Activity activity, Android.OS.Bundle savedInstanceState)
+        public void OnActivityCreated (Activity activity, Bundle savedInstanceState)
         {            
         }
 
@@ -34,7 +35,7 @@ namespace ZXing.Mobile
             currentActivity = activity;
         }
 
-        public void OnActivitySaveInstanceState (Activity activity, Android.OS.Bundle outState)
+        public void OnActivitySaveInstanceState (Activity activity, Bundle outState)
         {
         }
 

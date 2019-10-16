@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Core
 {
 	public class CameraResolution
 	{

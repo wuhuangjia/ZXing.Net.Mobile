@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-using ZXing.Rendering;
+using Android.Graphics;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Android
 {   
     /// <summary>
     /// A smart class to encode some content to a barcode image
     /// </summary>
-    public class BarcodeWriter : BarcodeWriter<Android.Graphics.Bitmap>, IBarcodeWriter
+    public class BarcodeWriter : BarcodeWriter<Bitmap>, IBarcodeWriter
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BarcodeWriter"/> class.

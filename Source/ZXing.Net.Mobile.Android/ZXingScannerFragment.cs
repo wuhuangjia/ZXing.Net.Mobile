@@ -2,9 +2,11 @@ using System;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using Android.Util;
 using Android.Support.V4.App;
+using ZXing.Net.Mobile.Core;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Android
 {
     public class ZXingScannerFragment : Fragment, IZXingScanner<View>, IScannerView
 	{
@@ -46,7 +48,7 @@ namespace ZXing.Mobile
                 Console.WriteLine ("Create Surface View Failed: " + ex);
             }
 
-            Android.Util.Log.Debug (MobileBarcodeScanner.TAG, "ZXingScannerFragment->OnResume exit");
+            Log.Debug (MobileBarcodeScanner.TAG, "ZXingScannerFragment->OnResume exit");
 
 			return frame;
         }

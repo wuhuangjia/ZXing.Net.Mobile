@@ -1,8 +1,8 @@
 ﻿using System;
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Core
 {
 	public interface IScannerSessionHost
 	{
-		ZXing.Mobile.MobileBarcodeScanningOptions ScanningOptions { get; }
+		MobileBarcodeScanningOptions ScanningOptions { get; }
 	}
 }

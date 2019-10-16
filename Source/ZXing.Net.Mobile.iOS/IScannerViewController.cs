@@ -1,8 +1,9 @@
 using System;
 
 using UIKit;
+using ZXing.Net.Mobile.Core;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.iOS
 {
 	public interface IScannerViewController
 	{

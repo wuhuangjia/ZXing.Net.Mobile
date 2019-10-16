@@ -14,7 +14,7 @@ using Android.Widget;
 using Android.Graphics;
 using Android.Text;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Android
 {
 	public class ZxingOverlayView : View 
 	{
@@ -25,7 +25,7 @@ namespace ZXing.Mobile
 		private const int POINT_SIZE = 6;
 
 		private Paint paint;
-		private Android.Graphics.Bitmap resultBitmap;
+		private Bitmap resultBitmap;
 		private Color maskColor;
 		private Color resultColor;
 		private Color frameColor;
@@ -209,7 +209,7 @@ namespace ZXing.Mobile
 			base.OnDraw (canvas);
 		}
 
-		public void DrawResultBitmap(Android.Graphics.Bitmap barcode)
+		public void DrawResultBitmap(Bitmap barcode)
 		{
 			resultBitmap = barcode;
 			Invalidate();

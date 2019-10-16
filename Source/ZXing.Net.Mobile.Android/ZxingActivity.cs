@@ -10,7 +10,7 @@ using Android.OS;
 using Android.Hardware;
 using Android.Graphics;
 
-using Android.Content;
+using Android.Content.Res;
 using Android.Runtime;
 using Android.Widget;
 
@@ -18,15 +18,18 @@ using ZXing;
 using Android.Support.V4.App;
 using System.Linq;
 using System.Threading.Tasks;
+using Android;
+using Android.Util;
+using ZXing.Net.Mobile.Core;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Android
 {
     [Activity (Label = "Scanner", ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenLayout)]
     public class ZxingActivity : FragmentActivity
     {
         public static readonly string[] RequiredPermissions = new[] {
-            Android.Manifest.Permission.Camera,
-            Android.Manifest.Permission.Flashlight
+            Manifest.Permission.Camera,
+            Manifest.Permission.Flashlight
         };
 
         public static Action<ZXing.Result> ScanCompletedHandler;
@@ -145,11 +148,11 @@ namespace ZXing.Mobile
             }, ScanningOptions);
         }
 
-        public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig)
+        public override void OnConfigurationChanged (Configuration newConfig)
         {
             base.OnConfigurationChanged (newConfig);
 
-            Android.Util.Log.Debug (MobileBarcodeScanner.TAG, "Configuration Changed");
+            Log.Debug (MobileBarcodeScanner.TAG, "Configuration Changed");
         }
 
         public void SetTorch (bool on)

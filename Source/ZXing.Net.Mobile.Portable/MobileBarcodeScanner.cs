@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ZXing.Net.Mobile.Core;
 
-namespace ZXing.Mobile
+namespace ZXing.Net.Mobile.Portable
 {
     public class MobileBarcodeScanner : MobileBarcodeScannerBase
     {
