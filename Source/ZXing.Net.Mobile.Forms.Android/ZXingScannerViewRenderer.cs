@@ -9,17 +9,18 @@ using Android.Views;
 using System.ComponentModel;
 using System.Reflection;
 using Android.Widget;
-using ZXing.Mobile;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using ZXing.Net.Mobile.Android;
+using Android.Content;
 
 [assembly:ExportRenderer(typeof(ZXingScannerView), typeof(ZXingScannerViewRenderer))]
 namespace ZXing.Net.Mobile.Forms.Android
 {
     [Preserve(AllMembers = true)]
-    public class ZXingScannerViewRenderer : ViewRenderer<ZXingScannerView, ZXing.Mobile.ZXingSurfaceView>
-    {       
-        public ZXingScannerViewRenderer () : base ()
+    public class ZXingScannerViewRenderer : ViewRenderer<ZXingScannerView, ZXingSurfaceView>
+    {
+        public ZXingScannerViewRenderer(Context context) : base(context)
         {
         }
 

@@ -6,14 +6,18 @@ using Android.Runtime;
 using Xamarin.Forms.Platform.Android;
 using System.ComponentModel;
 using Android.Widget;
-using ZXing.Mobile;
+using Android.Content;
+using ZXing.Net.Mobile.Android;
 
 [assembly:ExportRenderer(typeof(ZXingBarcodeImageView), typeof(ZXingBarcodeImageViewRenderer))]
 namespace ZXing.Net.Mobile.Forms.Android
 {
     [Preserve(AllMembers = true)]
     public class ZXingBarcodeImageViewRenderer : ViewRenderer<ZXingBarcodeImageView, ImageView>
-    {       
+    {
+        public ZXingBarcodeImageViewRenderer(Context context) : base(context)
+        {
+        }
         public static void Init ()
         {
             var temp = DateTime.Now;
@@ -49,7 +53,7 @@ namespace ZXing.Net.Mobile.Forms.Android
         {
             if (formsView != null && formsView.BarcodeValue != null)
             {
-                var writer = new ZXing.Mobile.BarcodeWriter();
+                var writer = new BarcodeWriter();
 
                 if (formsView != null && formsView.BarcodeOptions != null)
                     writer.Options = formsView.BarcodeOptions;

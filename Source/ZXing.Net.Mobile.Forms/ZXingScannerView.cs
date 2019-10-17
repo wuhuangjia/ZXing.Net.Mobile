@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using Xamarin.Forms;
-using ZXing.Mobile;
+using ZXing.Net.Mobile.Core;
 
 namespace ZXing.Net.Mobile.Forms
 {

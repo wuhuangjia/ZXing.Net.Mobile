@@ -10,8 +10,7 @@ using ZXing;
 
 namespace ZXing.Net.Mobile.Android
 {
-
-	public class MobileBarcodeScanner : MobileBarcodeScannerBase
+    	public class MobileBarcodeScanner : MobileBarcodeScannerBase
 	{
 		public const string TAG = "ZXing.Net.Mobile";
 
@@ -180,6 +179,5 @@ namespace ZXing.Net.Mobile.Android
         {
             Log.Warn("ZXING", format, args);
         }
-
     }
 }

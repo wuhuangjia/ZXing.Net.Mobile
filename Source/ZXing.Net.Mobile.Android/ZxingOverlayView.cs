@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Graphics;
 using Android.Text;
+using static Android.Text.Layout;
 
 namespace ZXing.Net.Mobile.Android
 {
@@ -93,8 +94,11 @@ namespace ZXing.Net.Mobile.Android
 			var textPaint = new TextPaint();
 			textPaint.Color = Color.White;
 			textPaint.TextSize = 16 * scale;
-
-			var topTextLayout = new StaticLayout(this.TopText, textPaint, canvas.Width, Android.Text.Layout.Alignment.AlignCenter, 1.0f, 0.0f, false);
+            StaticLayout.Builder sb = StaticLayout.Builder.Obtain(TopText,0, TopText.Length, textPaint, canvas.Width)
+                          .SetAlignment(Alignment.AlignCenter)
+                          .SetLineSpacing(0.0f,1.0f)
+                          .SetIncludePad(false);
+            StaticLayout topTextLayout = sb.Build();
 			canvas.Save();
 			Rect topBounds = new Rect();
 
@@ -106,9 +110,12 @@ namespace ZXing.Net.Mobile.Android
 
 			canvas.Restore();
 
-
-			var botTextLayout = new StaticLayout(this.BottomText, textPaint, canvas.Width, Android.Text.Layout.Alignment.AlignCenter, 1.0f, 0.0f, false);
-			canvas.Save();
+            StaticLayout.Builder sb2 = StaticLayout.Builder.Obtain(BottomText, 0, BottomText.Length, textPaint, canvas.Width)
+                      .SetAlignment(Alignment.AlignCenter)
+                      .SetLineSpacing(0.0f, 1.0f)
+                      .SetIncludePad(false);
+            StaticLayout botTextLayout = sb2.Build();
+            canvas.Save();
 			Rect botBounds = new Rect();
 			
 			textPaint.GetTextBounds(this.BottomText, 0, this.BottomText.Length, botBounds);

@@ -65,7 +65,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="zxing">
+    <Reference Include="zxing, Version=0.16.5.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ZXing.Net.0.16.5\lib\netstandard2.0\zxing.dll</HintPath>
     </Reference>
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ZXing.Mobile;
+using ZXing.Net.Mobile.Core;
 using System.Linq;
 using Android.App;
 using System.Threading.Tasks;

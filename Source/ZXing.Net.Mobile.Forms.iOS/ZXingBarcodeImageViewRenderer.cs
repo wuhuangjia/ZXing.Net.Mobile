@@ -4,11 +4,11 @@ using ZXing.Net.Mobile.Forms;
 using ZXing.Net.Mobile.Forms.iOS;
 using System.ComponentModel;
 using System.Reflection;
-using ZXing.Mobile;
 using System.Threading.Tasks;
 using Xamarin.Forms.Platform.iOS;
 using Foundation;
 using UIKit;
+using ZXing.Net.Mobile.iOS;
 
 [assembly:ExportRenderer(typeof(ZXingBarcodeImageView), typeof(ZXingBarcodeImageViewRenderer))]
 namespace ZXing.Net.Mobile.Forms.iOS
@@ -51,7 +51,7 @@ namespace ZXing.Net.Mobile.Forms.iOS
         {
             if (formsView != null && formsView.BarcodeValue != null)
             {
-                var writer = new ZXing.Mobile.BarcodeWriter();
+                var writer = new BarcodeWriter();
 
                 if (formsView != null && formsView.BarcodeOptions != null)
                     writer.Options = formsView.BarcodeOptions;

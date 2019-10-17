@@ -5,14 +5,15 @@ using Xamarin.Forms.Platform.iOS;
 using System.ComponentModel;
 using System.Reflection;
 using Foundation;
-using ZXing.Net.Mobile.Forms.iOS;
+using iOSZXing = ZXing.Net.Mobile.iOS;
+using FormsZXing = ZXing.Net.Mobile.Forms.iOS;
 using UIKit;
 
-[assembly:ExportRenderer(typeof(ZXingScannerView), typeof(ZXingScannerViewRenderer))]
+[assembly:ExportRenderer(typeof(ZXing.Net.Mobile.Forms.ZXingScannerView), typeof(FormsZXing.ZXingScannerViewRenderer))]
 namespace ZXing.Net.Mobile.Forms.iOS
 {
     [Preserve(AllMembers = true)]
-    public class ZXingScannerViewRenderer : ViewRenderer<ZXingScannerView, ZXing.Mobile.ZXingScannerView>
+    public class ZXingScannerViewRenderer : ViewRenderer<ZXingScannerView, iOSZXing.ZXingScannerView>
     {   
         // No-op to be called from app to prevent linker from stripping this out    
         public static void Init ()
@@ -20,8 +21,8 @@ namespace ZXing.Net.Mobile.Forms.iOS
             var temp = DateTime.Now;
         }
 
-        protected ZXingScannerView formsView;
-        protected ZXing.Mobile.ZXingScannerView zxingView;
+        protected ZXing.Net.Mobile.Forms.ZXingScannerView formsView;
+        protected iOSZXing.ZXingScannerView zxingView;
 
         protected override void OnElementChanged(ElementChangedEventArgs<ZXingScannerView> e)
         {
@@ -42,7 +43,7 @@ namespace ZXing.Net.Mobile.Forms.iOS
                 };
 
 
-                zxingView = new ZXing.Mobile.ZXingScannerView ();
+                zxingView = new iOSZXing.ZXingScannerView();
                 zxingView.UseCustomOverlayView = true;
                 zxingView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
 
